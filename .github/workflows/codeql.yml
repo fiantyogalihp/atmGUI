@@ -58,6 +58,7 @@ jobs:
       uses: actions/setup-java@v3.10.0
       with:
         java-version: 11.0.18
+        distribution: temurin
 
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
