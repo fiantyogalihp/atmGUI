@@ -140,14 +140,17 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 	String jenis = (String) jenis_comboBox.getSelectedItem();
 	Integer jumlah = Integer.valueOf(jumlah_textfield.getText());
 	
-	
-	
 	DBConnection con = new DBConnection();
 	
-	if (!jenis.equals("tarik") || !jenis.equals("setor")) {
+	if (jenis.equals("tarik") || jenis.equals("setor")) {
 	} else {
 		JOptionPane.showMessageDialog(null, "Mohon pilih jenis transaksi!");
 		return;	
+	}
+	
+	if (jumlah == 0) {
+		JOptionPane.showMessageDialog(null, "Jumlah Setor / Tarik Tunai tidak boleh kosong");
+		return;
 	}
 
 	if (jumlah % 50000 != 0) {
@@ -175,46 +178,44 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 					JOptionPane.showMessageDialog(null, "Minimal batas sisa saldo anda harus 50.000, anda tidak bisa melakukan penarikan dengan jumlah sisa saldo dibawah 50.000");
 					return;
 				}
-				sisa_saldo = user_result.getInt("jumlah_saldo") - jumlah;
+				sisa_saldo -=  jumlah;
 			} else if(jenis.equals("setor") && jumlah % 50000 == 0){
-				sisa_saldo = user_result.getInt("jumlah_saldo") + jumlah;
+				sisa_saldo += jumlah;
 			}
-			
+		
+			PreparedStatement transaksi = con.connect().prepareStatement(insert_transaksi);
+			transaksi.setString(1, id);
+			transaksi.setString(2, jenis);
+			transaksi.setInt(3, jumlah);
+			transaksi.setInt(4, sisa_saldo);
+
+			PreparedStatement update_saldo = con.connect().prepareStatement(update_user);
+			update_saldo.setInt(1, sisa_saldo);
+			update_saldo.setString(2, id);
+
+			int result_transaksi = transaksi.executeUpdate();
+			int result_saldo = update_saldo.executeUpdate();
+
+			if (result_transaksi > 0 && result_saldo > 0) {
+				JOptionPane.showMessageDialog(this, jenis + " anda berhasil!!");
+
+				session.getInstance().setUserId(id);
+
+				dashboard_page dashbooard = new dashboard_page();
+				dashbooard.setLocationRelativeTo(null);
+				dashbooard.setVisible(true);
+				dispose();
+			} else {
+				JOptionPane.showMessageDialog(null, jenis + "anda gagal!!");
+				return;
+			}
+
+			user.close();
+			user_result.close();
+			transaksi.close();
+			update_saldo.close();
+			con.connect().close();
 		}
-		
-		
-		PreparedStatement transaksi = con.connect().prepareStatement(insert_transaksi);
-		transaksi.setString(1, id);
-		transaksi.setString(2, jenis);
-		transaksi.setInt(3, jumlah);
-		transaksi.setInt(4, sisa_saldo);
-		
-		PreparedStatement update_saldo = con.connect().prepareStatement(update_user);
-		update_saldo.setInt(1, sisa_saldo);
-		update_saldo.setString(2, id);
-		
-		int result_transaksi = transaksi.executeUpdate();
-		int result_saldo = update_saldo.executeUpdate();
-		
-		if (result_transaksi > 0 && result_saldo > 0) {
-			JOptionPane.showMessageDialog(this, jenis + " anda berhasil!!");
-			
-			session.getInstance().setUserId(id);
-			
-			dashboard_page dashbooard = new dashboard_page();
-			dashbooard.setLocationRelativeTo(null);
-			dashbooard.setVisible(true);
-			dispose();
-		} else {
-			JOptionPane.showMessageDialog(null, jenis + "anda gagal!!");
-			return;
-		}
-		
-		user.close();
-		user_result.close();
-		transaksi.close();
-		update_saldo.close();
-		con.connect().close();
 
 	} catch (SQLException e) {
 		e.printStackTrace();
