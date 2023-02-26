@@ -4,6 +4,7 @@
  */
 package atmgui;
 
+
 /**
  *
  * @author fiyuu
@@ -14,7 +15,10 @@ public class AtmGUI {
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		// TODO code application logic here
+		login_page login = new login_page();
+		login.setDefaultCloseOperation(login_page.EXIT_ON_CLOSE);
+		login.setLocationRelativeTo(null);
+		login.setVisible(true);
 	}
 	
 }

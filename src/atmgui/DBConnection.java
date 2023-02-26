@@ -16,7 +16,9 @@ public class DBConnection {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			String url = "jdbc:mysql://localhost:3306/java_atm";
+			String url = "jdbc:mysql://localhost:3306/java_atm"
+				+ "?sessionVariables="
+				+ "sql_mode='NO_ENGINE_SUBSTITUTION'&jdbcCompliantTruncation=false";
 			String user = "root";
 			String pass = "";
 			

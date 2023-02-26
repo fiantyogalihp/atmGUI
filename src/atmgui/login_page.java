@@ -36,6 +36,7 @@ public class login_page extends javax.swing.JFrame {
                 jLabel2 = new javax.swing.JLabel();
                 pin_textfield = new javax.swing.JPasswordField();
                 login_button = new javax.swing.JButton();
+                register_button = new javax.swing.JButton();
 
                 javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
                 jPanel2.setLayout(jPanel2Layout);
@@ -64,38 +65,46 @@ public class login_page extends javax.swing.JFrame {
                         }
                 });
 
+                register_button.setText("Add Account");
+                register_button.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                register_buttonActionPerformed(evt);
+                        }
+                });
+
                 javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1Layout.setHorizontalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(173, 173, 173)
-                                                .addComponent(jLabel2))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(138, 138, 138)
-                                                .addComponent(jLabel1))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(155, 155, 155)
-                                                .addComponent(login_button))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(122, 122, 122)
-                                                .addComponent(pin_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(149, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(register_button)
+                                        .addComponent(login_button)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGap(138, 138, 138)
+                                                        .addComponent(jLabel1))
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGap(103, 103, 103)
+                                                        .addComponent(jLabel2)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(pin_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(131, Short.MAX_VALUE))
                 );
                 jPanel1Layout.setVerticalGroup(
                         jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pin_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(pin_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2))
+                                .addGap(31, 31, 31)
                                 .addComponent(login_button)
-                                .addContainerGap(161, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(register_button)
+                                .addContainerGap(134, Short.MAX_VALUE))
                 );
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,34 +123,51 @@ public class login_page extends javax.swing.JFrame {
 
         private void login_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_buttonActionPerformed
                 // TODO add your handling code here:
-		String pin = new String(pin_textfield.getPassword());
+	String pin = new String(pin_textfield.getPassword());
+	dashboard_page dashboard = new dashboard_page();
 		
-		String query = "SELECT * FROM user WHERE pin = ?";
-		
-		try {
-			DBConnection con = new DBConnection();
-			
-			PreparedStatement stat = con.connect().prepareStatement(query);
-			stat.setString(1, pin);
-			
-			ResultSet result = stat.executeQuery();
-			
-			if (result.next()) {
-				JOptionPane.showMessageDialog(this, "Login Berhasil!");
-			} else {
-				JOptionPane.showMessageDialog(this, "Login Gagal!");
-			}
-			
-			result.close();
-			stat.close();
-			con.connect().close();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+	String query = "SELECT  * FROM user WHERE pin = ?";
+	
+	if (pin.isEmpty()) {
+		JOptionPane.showMessageDialog(null, "pin tidak boleh kosong!");
+		return;
+	}
+	
+	try {
+		DBConnection con = new DBConnection();
+
+		PreparedStatement stat = con.connect().prepareStatement(query);
+		stat.setString(1, pin);
+
+		ResultSet result = stat.executeQuery();
+
+		if (result.next()) {
+			JOptionPane.showMessageDialog(this, "Login Berhasil!");
+			dashboard.setVisible(true);
+			dashboard.setLocationRelativeTo(null);
+			dispose();
+		} else {
+			JOptionPane.showMessageDialog(this, "Login Gagal!");
+			return;
 		}
-		
+
+		result.close();
+		stat.close();
+		con.connect().close();
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 		
         }//GEN-LAST:event_login_buttonActionPerformed
+
+        private void register_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register_buttonActionPerformed
+	register_page register = new register_page();
+	register.setVisible(true);
+	register.setDefaultCloseOperation(dashboard_page.EXIT_ON_CLOSE);
+	register.setLocationRelativeTo(null);
+	dispose();
+        }//GEN-LAST:event_register_buttonActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -186,5 +212,6 @@ public class login_page extends javax.swing.JFrame {
         private javax.swing.JPanel jPanel2;
         private javax.swing.JButton login_button;
         private javax.swing.JPasswordField pin_textfield;
+        private javax.swing.JButton register_button;
         // End of variables declaration//GEN-END:variables
 }
