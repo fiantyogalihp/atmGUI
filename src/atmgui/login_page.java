@@ -5,9 +5,7 @@
 package atmgui;
 
 import java.sql.*;
-import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -20,12 +18,6 @@ public class login_page extends javax.swing.JFrame {
 	 */
 	public login_page() {
 		initComponents();
-	}
-	
-	private HttpServletRequest request;
-	public void createSession(String userId) {
-		HttpSession session = request.getSession();
-		session.setAttribute("userId", userId);
 	}
 
 	/**
