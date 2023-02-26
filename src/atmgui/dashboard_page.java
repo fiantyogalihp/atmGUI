@@ -20,7 +20,7 @@ public class dashboard_page extends javax.swing.JFrame {
     public dashboard_page() {
         initComponents();
     }
-
+   
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -92,6 +92,11 @@ public class dashboard_page extends javax.swing.JFrame {
                 jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
                 kelipatan50_button.setText("50");
+                kelipatan50_button.addActionListener(new java.awt.event.ActionListener() {
+                        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                kelipatan50_buttonActionPerformed(evt);
+                        }
+                });
 
                 kelipatan100_button.setText("100");
                 kelipatan100_button.addActionListener(new java.awt.event.ActionListener() {
@@ -126,10 +131,6 @@ public class dashboard_page extends javax.swing.JFrame {
                 layout.setHorizontalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(342, Short.MAX_VALUE)
-                                .addComponent(logout_button)
-                                .addContainerGap())
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,6 +139,10 @@ public class dashboard_page extends javax.swing.JFrame {
                                         .addComponent(transfer_button)
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(logout_button)
+                                .addGap(16, 16, 16))
                 );
                 layout.setVerticalGroup(
                         layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +156,7 @@ public class dashboard_page extends javax.swing.JFrame {
                                 .addComponent(ceksaldo_button)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(transfer_button)
-                                .addGap(21, 21, 21)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(logout_button)
                                 .addContainerGap())
                 );
@@ -169,11 +174,26 @@ private void transfer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//G
 
 private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
 // TODO add your handling code here:
+	login_page login = new login_page();
+	login.setLocationRelativeTo(null);
+	login.setVisible(true);
+	dispose();
 }//GEN-LAST:event_logout_buttonActionPerformed
 
 private void kelipatan100_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelipatan100_buttonActionPerformed
 // TODO add your handling code here:
 }//GEN-LAST:event_kelipatan100_buttonActionPerformed
+
+        private void kelipatan50_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelipatan50_buttonActionPerformed
+                // TODO add your handling code here:
+	String id = session.getInstance().getUserId();
+	session.getInstance().setUserId(id);
+	
+	setor_tarik_kelipatan_50_page k_50_page = new setor_tarik_kelipatan_50_page();
+	k_50_page.setLocationRelativeTo(null);
+	k_50_page.setVisible(true);
+	dispose();
+        }//GEN-LAST:event_kelipatan50_buttonActionPerformed
 
     /**
      * @param args the command line arguments

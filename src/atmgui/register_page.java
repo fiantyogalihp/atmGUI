@@ -198,6 +198,7 @@ public class register_page extends javax.swing.JFrame {
 	Integer no_rekening = Integer.valueOf(bankAccountGenerator());
 	
 	DBConnection con = new DBConnection();
+	login_page login = new login_page();
 	
 	if (!isNumberOnly(pin)) {
 		JOptionPane.showMessageDialog(null, "pin harus berupa Number!");
@@ -238,6 +239,9 @@ public class register_page extends javax.swing.JFrame {
 		
 		if (result_bank.next()) {
 			id_bank = result_bank.getInt("id");
+		} else {
+			JOptionPane.showMessageDialog(null, "Silahkan pilih bank yang Valid!");
+			return;
 		}
 		
 		PreparedStatement final_query = con.connect().prepareStatement(insert);
@@ -251,9 +255,8 @@ public class register_page extends javax.swing.JFrame {
 		
 		if (final_result > 0) {
 			JOptionPane.showMessageDialog(this, "anda berhasil registrasi!");
-			dashboard_page dashboard = new dashboard_page();
-			dashboard.setLocationRelativeTo(null);
-			dashboard.setVisible(true);
+			login.setLocationRelativeTo(null);
+			login.setVisible(true);
 			dispose();
 		} else {
 			JOptionPane.showMessageDialog(this, "anda gagal registrasi!");
