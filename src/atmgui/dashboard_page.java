@@ -246,12 +246,9 @@ private void kelipatan100_buttonActionPerformed(java.awt.event.ActionEvent evt) 
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new dashboard_page().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> {
+		new dashboard_page().setVisible(true);
+	});
     }
         // Variables declaration - do not modify//GEN-BEGIN:variables
         private javax.swing.JButton ceksaldo_button;

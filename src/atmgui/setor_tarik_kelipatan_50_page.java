@@ -5,12 +5,7 @@
 package atmgui;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,16 +14,19 @@ import javax.swing.JOptionPane;
  */
 public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form setor_tarik_page
-	 */
-	private String id = session.getInstance().getUserId();
+	private final String id;
+	private final DBConnection con;
 	public setor_tarik_kelipatan_50_page() {
+		this.con = new DBConnection();
+		this.id = session.getInstance().getUserId();
 		initComponents();
 		setModelList();
 	}
 	
-	public void setModelList(){
+/**
+	 * Creates new form setor_tarik_page
+	 */
+	private void setModelList(){
 		String[] items = {"Pilih jenis Transaksi",  "tarik", "setor"};
 		
 		jenis_comboBox.setModel(new DefaultComboBoxModel<>(items));	
@@ -151,8 +149,6 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
                 // TODO add your handling code here:
 	String jenis = (String) jenis_comboBox.getSelectedItem();
 	String jumlah_validation = jumlah_textfield.getText();
-	
-	DBConnection con = new DBConnection();
 	
 	if (jenis.equals("tarik") || jenis.equals("setor")) {
 	} else {
@@ -277,10 +273,8 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new setor_tarik_kelipatan_50_page().setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new setor_tarik_kelipatan_50_page().setVisible(true);
 		});
 	}
 

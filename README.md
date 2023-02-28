@@ -1,7 +1,3 @@
-#
-
-![]()
-
 <h1 align="center">
   <br>
   <a href=""><img src="https://user-images.githubusercontent.com/88466328/222019445-b6009f5c-e31d-437a-97b6-d00de2938d6a.png" alt="logo-kanesa" width="200"></a>
@@ -10,7 +6,7 @@
   <br>
 </h1>
 
-<h4 align="center">A simple ATM GUI Swing Java Application System Project for Kanesa To-Do<a href="https://smkn1kepanjen.sch.id/web/" target="_blank">Kanesa</a>.</h4>
+<h4 align="center">A simple ATM GUI Swing Java Application System Project for <a href="https://smkn1kepanjen.sch.id/web/" target="_blank">Kanesa</a> To-Do.</h4>
 
 <p align="center">
   <a href="#key-features">Key Features</a> •
@@ -32,6 +28,7 @@
 - Session User Login Logout
 - A simple Validation in every Feature
 - Fast Build
+- PDF Struct
 
 ## How To Use
 

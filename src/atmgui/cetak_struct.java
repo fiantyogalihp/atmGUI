@@ -5,11 +5,12 @@
 package atmgui;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.HeadlessException;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.*;
 import javax.swing.JOptionPane;
@@ -20,13 +21,16 @@ import javax.swing.JOptionPane;
  */
 public class cetak_struct extends javax.swing.JFrame {
 
+	private final String id;
+	private static String kode;
+	private final DBConnection con;
 	/**
 	 * Creates new form cetak_struct
+	 * @param uuid
 	 */
-	private final String id = session.getInstance().getUserId();
-	private static String kode;
-	
 	public cetak_struct(String uuid) {
+		this.con = new DBConnection();
+		this.id = session.getInstance().getUserId();
 		initComponents();
 		cetak_struct.kode = uuid;
 	}
@@ -99,8 +103,6 @@ public class cetak_struct extends javax.swing.JFrame {
 
         private void cetak_struct_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetak_struct_buttonActionPerformed
                 // TODO add your handling code here:
-		DBConnection con = new DBConnection();
-		
 	try {
 		// Create PDF document
 		Document document = new Document(PageSize.A4);
@@ -112,19 +114,6 @@ public class cetak_struct extends javax.swing.JFrame {
 		stmt.setString(1, kode);
 		
 		ResultSet result = stmt.executeQuery();
-
-		// Create table
-//		PdfPTable table = new PdfPTable(5);
-//		table.setWidthPercentage(100);
-//		PdfPCell cell = new PdfPCell(new Paragraph("Transfer Struct \n \n"));
-//		cell.setColspan(3);
-//		table.addCell(cell);
-//		table.addCell("Kode Transfer");
-//		table.addCell("Bank Penerima");
-//		table.addCell("Jumlah");
-//		table.addCell("Penerima");
-//		table.addCell("Pengirim");
-//		table.addCell("Tanggal");
 
 		// Add data
 		if (result.next()) {
@@ -152,7 +141,7 @@ public class cetak_struct extends javax.swing.JFrame {
 		
 		JOptionPane.showMessageDialog(this, "PDF berhasil dibuat");
 		
-	     } catch (Exception e) {
+	     } catch (DocumentException | HeadlessException | FileNotFoundException | SQLException e) {
 		e.printStackTrace();
 	     }
         }//GEN-LAST:event_cetak_struct_buttonActionPerformed
@@ -195,10 +184,8 @@ public class cetak_struct extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new cetak_struct(kode).setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new cetak_struct(kode).setVisible(true);
 		});
 	}
 

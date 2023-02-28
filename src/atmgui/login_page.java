@@ -4,6 +4,7 @@
  */
 package atmgui;
 
+import java.awt.HeadlessException;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
@@ -13,10 +14,12 @@ import javax.swing.JOptionPane;
  */
 public class login_page extends javax.swing.JFrame {
 
+	private final DBConnection con;
 	/**
 	 * Creates new form login_page
 	 */
 	public login_page() {
+		this.con = new DBConnection();
 		initComponents();
 	}
 
@@ -134,8 +137,6 @@ public class login_page extends javax.swing.JFrame {
 	}
 	
 	try {
-		DBConnection con = new DBConnection();
-
 		PreparedStatement stat = con.connect().prepareStatement(query);
 		stat.setString(1, pin);
 
@@ -158,7 +159,7 @@ public class login_page extends javax.swing.JFrame {
 		stat.close();
 		con.connect().close();
 
-	} catch (Exception e) {
+	} catch (HeadlessException | SQLException e) {
 		e.printStackTrace();
 	}
 		
@@ -200,10 +201,8 @@ public class login_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new login_page().setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new login_page().setVisible(true);
 		});
 	}
 

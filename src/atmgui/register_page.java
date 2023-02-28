@@ -18,30 +18,30 @@ import javax.swing.JOptionPane;
  */
 public class register_page extends javax.swing.JFrame {
 
+	private final DBConnection con;
 	/**
 	 * Creates new form register_page
 	 */
 	public register_page() {
+		this.con = new DBConnection();
 		initComponents();
 		setModelList();
 	}
 	
-	public String bankAccountGenerator(){
+	private String bankAccountGenerator(){
 		Random generator = new Random();
 		String startWith = "007";
 		String accountNumber = startWith + generator.nextInt(1000000);
 		return accountNumber;
 	}
 	
-	public boolean isNumberOnly(String str) {
+	private boolean isNumberOnly(String str) {
 		String pattern = "^[0-9]+$";
 		return str.matches(pattern);
 	}
 	
-	public void setModelList() {
+	private void setModelList() {
 		HashMap<Integer, String> bankMap = new HashMap<>();
-	
-		DBConnection con = new DBConnection();
 
 		String select_bank = "SELECT  * FROM bank";
 		try {
@@ -321,10 +321,8 @@ public class register_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new register_page().setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new register_page().setVisible(true);
 		});
 	}
 

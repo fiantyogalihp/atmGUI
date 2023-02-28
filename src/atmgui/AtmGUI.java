@@ -4,7 +4,6 @@
  */
 package atmgui;
 
-
 /**
  *
  * @author fiyuu

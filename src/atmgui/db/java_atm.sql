@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 28, 2023 at 07:25 PM
+-- Generation Time: Feb 28, 2023 at 10:11 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -74,7 +74,7 @@ INSERT INTO `setor_tarik_tunai` (`id`, `user_id`, `jenis`, `jumlah`, `sisa_saldo
 
 CREATE TABLE `transfer` (
   `id` int NOT NULL,
-  `uuid` int NOT NULL,
+  `uuid` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `bank_penerima` varchar(10) NOT NULL,
   `id_user_pengirim` int NOT NULL,
   `jumlah` double NOT NULL,
@@ -88,20 +88,28 @@ CREATE TABLE `transfer` (
 --
 
 INSERT INTO `transfer` (`id`, `uuid`, `bank_penerima`, `id_user_pengirim`, `jumlah`, `penerima`, `pengirim`, `tgl`) VALUES
-(1, 0, 'BCA', 1, 50000, 'GILANG PEDO', 'FIANTYO', '2023-02-28 17:33:04'),
-(2, 0, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-02-28 21:07:57'),
-(3, 82885, 'BCA', 1, 50000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:23:15'),
-(4, 39, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:28:11'),
-(5, 5013646, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:29:03'),
-(6, 6631, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:29:55'),
-(7, 0, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:33:26'),
-(8, 483, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:40:46'),
-(9, 0, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:41:42'),
-(10, 0, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:44:05'),
-(11, 17, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:50:50'),
-(12, 0, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:53:58'),
-(13, 0, 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 02:10:19'),
-(14, 63967, 'BCA', 1, 100000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 02:13:30');
+(1, '0', 'BCA', 1, 50000, 'GILANG PEDO', 'FIANTYO', '2023-02-28 17:33:04'),
+(2, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-02-28 21:07:57'),
+(3, '82885', 'BCA', 1, 50000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:23:15'),
+(4, '39', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:28:11'),
+(5, '5013646', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:29:03'),
+(6, '6631', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:29:55'),
+(7, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:33:26'),
+(8, '483', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:40:46'),
+(9, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:41:42'),
+(10, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:44:05'),
+(11, '17', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:50:50'),
+(12, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 01:53:58'),
+(13, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 02:10:19'),
+(14, '63967', 'BCA', 1, 100000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 02:13:30'),
+(15, '1', 'BCA', 1, 50000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 02:31:51'),
+(16, '0', 'BCA', 1, 80000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 03:53:25'),
+(17, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 04:05:37'),
+(18, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 04:07:55'),
+(19, '0', 'BCA', 1, 30000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 04:21:41'),
+(20, '0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 05:05:15'),
+(21, '7137ccd1-acdb-4056-b', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 05:06:51'),
+(22, '5ff8a98c-b177-4ce2-bfab-921ac23bdab0', 'BCA', 1, 20000, 'GILANG PEDO', 'FIANTYO', '2023-03-01 05:09:24');
 
 --
 -- Triggers `transfer`
@@ -134,8 +142,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `id_bank`, `jumlah_saldo`, `nama`, `no_rekening`, `pin`) VALUES
-(1, 1, 430000, 'FIANTYO', 98760, '123451'),
-(10, 1, 920000, 'GILANG PEDO', 76201, '121314'),
+(1, 1, 170000, 'FIANTYO', 98760, '123451'),
+(10, 1, 1180000, 'GILANG PEDO', 76201, '121314'),
 (11, 1, 500000, 'UWIIII', 659995, '1122443');
 
 --
@@ -187,7 +195,7 @@ ALTER TABLE `setor_tarik_tunai`
 -- AUTO_INCREMENT for table `transfer`
 --
 ALTER TABLE `transfer`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user`

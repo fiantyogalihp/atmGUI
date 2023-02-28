@@ -13,17 +13,22 @@ import javax.swing.JOptionPane;
  */
 public class transfer_page extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form transfer_page
-	 */
-	String id = session.getInstance().getUserId();
+	private final String id;
+	private final DBConnection con;
+	private final String uuid;
 	public transfer_page() {
+		this.uuid = generateUUID();
+		this.con = new DBConnection();
+		this.id = session.getInstance().getUserId();
 		initComponents();
 	}
 	
-	public String generateUUID() {
-		UUID uuid = UUID.randomUUID();
-		return uuid.toString();
+	/**
+	 * Creates new form transfer_page
+	 */
+	private String generateUUID() {
+		UUID random = UUID.randomUUID();
+		return random.toString();
 	}
 
 	/**
@@ -142,14 +147,11 @@ public class transfer_page extends javax.swing.JFrame {
                 // TODO add your handling code here:
 	String no_rekening = no_rekening_textfield.getText();
 	Integer jumlah_transfer = Integer.valueOf(jumlah_transfer_textfield.getText());
-	String uuid = generateUUID();
 	
 	if (jumlah_transfer.equals(0)) {
 		JOptionPane.showMessageDialog(null, "Isi kan jumlah yang akan di Transfer!");
 		return;
 	}
-	
-	DBConnection con = new DBConnection();
 	
 	String select_no_rekening_tujuan = "SELECT * FROM user WHERE no_rekening = ?";
 	
@@ -157,9 +159,7 @@ public class transfer_page extends javax.swing.JFrame {
 	
 	String select_user_pengirim = "SELECT * FROM user WHERE id = ?";
 	
-	String transferTo = "INSERT INTO transfer SET bank_penerima = ?, id_user_pengirim = ?, jumlah = ?, penerima = ?, pengirim = ?, tgl = NOW(), uuid = ?";
-	
-	String select_transfer = "SELECT * FROM transfer";
+	String transferTo = "INSERT INTO transfer SET uuid = ?, bank_penerima = ?, id_user_pengirim = ?, jumlah = ?, penerima = ?, pengirim = ?, tgl = NOW()";
 	
 	try {
 		// no rekening
@@ -203,12 +203,12 @@ public class transfer_page extends javax.swing.JFrame {
 			} 
 			
 			PreparedStatement insert_transfer = con.connect().prepareStatement(transferTo);
-			insert_transfer.setString(1, nama_bank);
-			insert_transfer.setString(2, id);
-			insert_transfer.setInt(3, jumlah_transfer);
-			insert_transfer.setString(4, nama_penerima);
-			insert_transfer.setString(5, nama_pengirim);
-			insert_transfer.setString(6, uuid);
+			insert_transfer.setString(1, uuid);
+			insert_transfer.setString(2, nama_bank);
+			insert_transfer.setString(3, id);
+			insert_transfer.setInt(4, jumlah_transfer);
+			insert_transfer.setString(5, nama_penerima);
+			insert_transfer.setString(6, nama_pengirim);
 		
 			int result_transfer = insert_transfer.executeUpdate();
 			if (result_transfer > 0) {
@@ -283,10 +283,8 @@ public class transfer_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new transfer_page().setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new transfer_page().setVisible(true);
 		});
 	}
 

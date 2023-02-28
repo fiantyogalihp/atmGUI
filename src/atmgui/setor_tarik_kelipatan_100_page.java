@@ -14,16 +14,19 @@ import javax.swing.JOptionPane;
  */
 public class setor_tarik_kelipatan_100_page extends javax.swing.JFrame {
 
-	/**
-	 * Creates new form setor_tarik_kelipatan_100_page
-	 */
-	private String id = session.getInstance().getUserId();
+	private final String id;
+	private final DBConnection con;
 	public setor_tarik_kelipatan_100_page() {
+		this.con = new DBConnection();
+		this.id = session.getInstance().getUserId();
 		initComponents();
 		setModelList();
 	}
 	
-	public void setModelList(){
+/**
+	 * Creates new form setor_tarik_kelipatan_100_page
+	 */
+		private void setModelList(){
 		String[] items = {"Pilih jenis Transaksi",  "tarik", "setor"};
 		
 		jenis_comboBox.setModel(new DefaultComboBoxModel<>(items));	
@@ -159,8 +162,6 @@ public class setor_tarik_kelipatan_100_page extends javax.swing.JFrame {
                 String jenis = (String) jenis_comboBox.getSelectedItem();
 	String jumlah_validation = jumlah_textfield.getText();
 	
-	DBConnection con = new DBConnection();
-	
 	if (jenis.equals("tarik") || jenis.equals("setor")) {
 	} else {
 		JOptionPane.showMessageDialog(null, "Mohon pilih jenis transaksi!");
@@ -282,10 +283,8 @@ public class setor_tarik_kelipatan_100_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new setor_tarik_kelipatan_100_page().setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new setor_tarik_kelipatan_100_page().setVisible(true);
 		});
 	}
 

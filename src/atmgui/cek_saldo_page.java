@@ -11,17 +11,19 @@ import java.sql.*;
  */
 public class cek_saldo_page extends javax.swing.JFrame {
 
+	private final String id;
+	private final DBConnection con;
 	/**
 	 * Creates new form cek_saldo
 	 */
-	String id = session.getInstance().getUserId();
-	DBConnection con = new DBConnection();
 	public cek_saldo_page() {
+		this.id = session.getInstance().getUserId();
+		this.con = new DBConnection();
 		initComponents();
 		labelSetText();
 	}
 	
-	public void labelSetText(){
+	private void labelSetText(){
 		String select_user = "SELECT * FROM user WHERE id = ?";
 		
 		try {
@@ -166,10 +168,8 @@ public class cek_saldo_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new cek_saldo_page().setVisible(true);
-			}
+		java.awt.EventQueue.invokeLater(() -> {
+			new cek_saldo_page().setVisible(true);
 		});
 	}
 
