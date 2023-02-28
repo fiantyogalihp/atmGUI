@@ -166,14 +166,30 @@ public class dashboard_page extends javax.swing.JFrame {
 
 private void ceksaldo_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceksaldo_buttonActionPerformed
 // TODO add your handling code here:
+	String id = session.getInstance().getUserId();
+	session.getInstance().setUserId(id);
+	
+	cek_saldo_page saldo = new cek_saldo_page();
+	saldo.setLocationRelativeTo(null);
+	saldo.setVisible(true);
+	dispose();
 }//GEN-LAST:event_ceksaldo_buttonActionPerformed
 
 private void transfer_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_transfer_buttonActionPerformed
 // TODO add your handling code here:
+	String id = session.getInstance().getUserId();
+	session.getInstance().setUserId(id);
+	
+	transfer_page transfer = new transfer_page();
+	transfer.setLocationRelativeTo(null);
+	transfer.setVisible(true);
+	dispose();
 }//GEN-LAST:event_transfer_buttonActionPerformed
 
 private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
 // TODO add your handling code here:
+	session.getInstance().setUserId("");
+
 	login_page login = new login_page();
 	login.setLocationRelativeTo(null);
 	login.setVisible(true);
@@ -182,6 +198,13 @@ private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN
 
 private void kelipatan100_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelipatan100_buttonActionPerformed
 // TODO add your handling code here:
+	String id = session.getInstance().getUserId();
+	session.getInstance().setUserId(id);
+	
+	setor_tarik_kelipatan_100_page k_100_page = new setor_tarik_kelipatan_100_page();
+	k_100_page.setLocationRelativeTo(null);
+	k_100_page.setVisible(true);
+	dispose();
 }//GEN-LAST:event_kelipatan100_buttonActionPerformed
 
         private void kelipatan50_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelipatan50_buttonActionPerformed

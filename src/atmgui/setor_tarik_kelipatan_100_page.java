@@ -5,25 +5,20 @@
 package atmgui;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author fiyuu
  */
-public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
+public class setor_tarik_kelipatan_100_page extends javax.swing.JFrame {
 
 	/**
-	 * Creates new form setor_tarik_page
+	 * Creates new form setor_tarik_kelipatan_100_page
 	 */
 	private String id = session.getInstance().getUserId();
-	public setor_tarik_kelipatan_50_page() {
+	public setor_tarik_kelipatan_100_page() {
 		initComponents();
 		setModelList();
 	}
@@ -43,6 +38,7 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
         // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
         private void initComponents() {
 
+                jPanel1 = new javax.swing.JPanel();
                 jLabel1 = new javax.swing.JLabel();
                 jenis_comboBox = new javax.swing.JComboBox<>();
                 jLabel2 = new javax.swing.JLabel();
@@ -76,7 +72,7 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
                 jLabel3.setText("Setor / Tarik tunai");
 
                 jLabel4.setForeground(new java.awt.Color(255, 0, 0));
-                jLabel4.setText("- JUMLAH TRANSAKSI HARUS KELIPATAN 50.000");
+                jLabel4.setText("- JUMLAH TRANSAKSI HARUS KELIPATAN 100.000");
 
                 jLabel5.setForeground(new java.awt.Color(255, 0, 0));
                 jLabel5.setText("- JUMLAH HARUS SATUAN RIBU, RATUS, DLL");
@@ -88,45 +84,45 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
                         }
                 });
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
+                javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+                jPanel1.setLayout(jPanel1Layout);
+                jPanel1Layout.setHorizontalGroup(
+                        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(122, 122, 122)
                                                 .addComponent(jLabel3))
-                                        .addGroup(layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(18, 18, 18)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addComponent(submit_button)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                 .addComponent(back_button)
-                                                                .addGroup(layout.createSequentialGroup()
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                                                 .addComponent(jLabel2)
                                                                                 .addComponent(jLabel1))
                                                                         .addGap(45, 45, 45)
-                                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                                                 .addComponent(jLabel4)
-                                                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                                                         .addComponent(jenis_comboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                                         .addComponent(jumlah_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                                                 .addComponent(jLabel5)))))))
-                                .addContainerGap(42, Short.MAX_VALUE))
+                                .addContainerGap(36, Short.MAX_VALUE))
                 );
-                layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+                jPanel1Layout.setVerticalGroup(
+                        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel3)
                                 .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel1)
                                         .addComponent(jenis_comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel2)
                                         .addComponent(jumlah_textfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -140,6 +136,17 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
                                 .addContainerGap(43, Short.MAX_VALUE))
                 );
 
+                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+                getContentPane().setLayout(layout);
+                layout.setHorizontalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                );
+                layout.setVerticalGroup(
+                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                );
+
                 pack();
         }// </editor-fold>//GEN-END:initComponents
 
@@ -149,7 +156,7 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 
         private void submit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submit_buttonActionPerformed
                 // TODO add your handling code here:
-	String jenis = (String) jenis_comboBox.getSelectedItem();
+                String jenis = (String) jenis_comboBox.getSelectedItem();
 	String jumlah_validation = jumlah_textfield.getText();
 	
 	DBConnection con = new DBConnection();
@@ -166,8 +173,8 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 	
 	Integer jumlah = Integer.valueOf(jumlah_validation);
 
-	if (jumlah % 50000 != 0) {
-		JOptionPane.showMessageDialog(null, "Jumlah Setor / Tarik Tunai harus Kelipatan 50!");
+	if (jumlah % 100000 != 0) {
+		JOptionPane.showMessageDialog(null, "Jumlah Setor / Tarik Tunai harus Kelipatan 100!");
 		return;
 	}
 	
@@ -181,18 +188,17 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 		user.setString(1, id);
 		
 		ResultSet user_result = user.executeQuery();
-		 
-		Integer sisa_saldo = 0;
+		
 		if (user_result.next()) {
-			sisa_saldo = user_result.getInt("jumlah_saldo");
+			Integer sisa_saldo = user_result.getInt("jumlah_saldo");
 			if (jenis.equals("tarik")) {
 				
-				if ( jumlah % 50000 == 0 && sisa_saldo - jumlah < 50000) {
-					JOptionPane.showMessageDialog(null, "Minimal batas sisa saldo anda harus 50.000, anda tidak bisa melakukan penarikan dengan jumlah sisa saldo dibawah 50.000");
+				if ( jumlah % 100000 == 0 && sisa_saldo - jumlah < 50000) {
+					JOptionPane.showMessageDialog(null, "Minimal batas sisa saldo anda harus 100.000, anda tidak bisa melakukan penarikan dengan jumlah sisa saldo dibawah 50.000");
 					return;
 				}
 				sisa_saldo -=  jumlah;
-			} else if(jenis.equals("setor") && jumlah % 50000 == 0){
+			} else if(jenis.equals("setor") && jumlah % 100000 == 0){
 				sisa_saldo += jumlah;
 			}
 		
@@ -228,13 +234,13 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 		}
 		
 		user.close();
-		user_result.close();
+			user_result.close();
 		con.connect().close();
 
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}
-	
+
         }//GEN-LAST:event_submit_buttonActionPerformed
 
         private void back_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back_buttonActionPerformed
@@ -264,21 +270,20 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 				}
 			}
 		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_50_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_100_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_50_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_100_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_50_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_100_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_50_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			java.util.logging.Logger.getLogger(setor_tarik_kelipatan_100_page.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
-		//</editor-fold>
 		//</editor-fold>
 
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new setor_tarik_kelipatan_50_page().setVisible(true);
+				new setor_tarik_kelipatan_100_page().setVisible(true);
 			}
 		});
 	}
@@ -290,6 +295,7 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
         private javax.swing.JLabel jLabel3;
         private javax.swing.JLabel jLabel4;
         private javax.swing.JLabel jLabel5;
+        private javax.swing.JPanel jPanel1;
         private javax.swing.JComboBox<String> jenis_comboBox;
         private javax.swing.JTextField jumlah_textfield;
         private javax.swing.JButton submit_button;
