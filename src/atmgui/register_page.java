@@ -28,8 +28,8 @@ public class register_page extends javax.swing.JFrame {
 	
 	public String bankAccountGenerator(){
 		Random generator = new Random();
-//		String startWith = "007";
-		String accountNumber = String.format("%08d", generator.nextInt(1000000));
+		String startWith = "007";
+		String accountNumber = startWith + generator.nextInt(1000000);
 		return accountNumber;
 	}
 	

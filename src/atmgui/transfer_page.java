@@ -5,6 +5,7 @@
 package atmgui;
 
 import java.sql.*;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 /**
  *
@@ -18,6 +19,11 @@ public class transfer_page extends javax.swing.JFrame {
 	String id = session.getInstance().getUserId();
 	public transfer_page() {
 		initComponents();
+	}
+	
+	public String generateUUID() {
+		UUID uuid = UUID.randomUUID();
+		return uuid.toString();
 	}
 
 	/**
@@ -136,6 +142,7 @@ public class transfer_page extends javax.swing.JFrame {
                 // TODO add your handling code here:
 	String no_rekening = no_rekening_textfield.getText();
 	Integer jumlah_transfer = Integer.valueOf(jumlah_transfer_textfield.getText());
+	String uuid = generateUUID();
 	
 	if (jumlah_transfer.equals(0)) {
 		JOptionPane.showMessageDialog(null, "Isi kan jumlah yang akan di Transfer!");
@@ -150,7 +157,9 @@ public class transfer_page extends javax.swing.JFrame {
 	
 	String select_user_pengirim = "SELECT * FROM user WHERE id = ?";
 	
-	String transferTo = "INSERT INTO transfer SET bank_penerima = ?, id_user_pengirim = ?, jumlah = ?, penerima = ?, pengirim = ?, tgl = NOW()";
+	String transferTo = "INSERT INTO transfer SET bank_penerima = ?, id_user_pengirim = ?, jumlah = ?, penerima = ?, pengirim = ?, tgl = NOW(), uuid = ?";
+	
+	String select_transfer = "SELECT * FROM transfer";
 	
 	try {
 		// no rekening
@@ -199,15 +208,17 @@ public class transfer_page extends javax.swing.JFrame {
 			insert_transfer.setInt(3, jumlah_transfer);
 			insert_transfer.setString(4, nama_penerima);
 			insert_transfer.setString(5, nama_pengirim);
+			insert_transfer.setString(6, uuid);
 		
 			int result_transfer = insert_transfer.executeUpdate();
 			if (result_transfer > 0) {
 				JOptionPane.showMessageDialog(this, "berhasil Transfer!");
+				
 				session.getInstance().setUserId(id);
 				
-				dashboard_page dashboard = new dashboard_page();
-				dashboard.setLocationRelativeTo(null);
-				dashboard.setVisible(true);
+				cetak_struct cetakStruct = new cetak_struct(uuid);
+				cetakStruct.setLocationRelativeTo(null);
+				cetakStruct.setVisible(true);
 				dispose();
 			}
 			
