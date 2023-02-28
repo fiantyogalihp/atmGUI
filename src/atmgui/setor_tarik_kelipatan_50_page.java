@@ -154,7 +154,8 @@ public class setor_tarik_kelipatan_50_page extends javax.swing.JFrame {
 	
 	DBConnection con = new DBConnection();
 	
-	if (jenis != "tarik" || jenis != "setor") {
+	if (jenis.equals("tarik") || jenis.equals("setor")) {
+	} else {
 		JOptionPane.showMessageDialog(null, "Mohon pilih jenis transaksi!");
 		return;
 	}
