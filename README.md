@@ -6,7 +6,7 @@
   <br>
   <a href=""><img src="https://user-images.githubusercontent.com/88466328/222019445-b6009f5c-e31d-437a-97b6-d00de2938d6a.png" alt="logo-kanesa" width="200"></a>
   <br>
-  Kanesa
+  Simple ATM Java GUI System by Kanesa Student
   <br>
 </h1>
 
@@ -21,7 +21,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-markdownify/master/app/img/markdownify.gif)
+![screenshot](https://user-images.githubusercontent.com/88466328/222022364-1e01a6f7-c005-44a7-b418-1661bae446ea.png)
 
 ## Key Features
 
