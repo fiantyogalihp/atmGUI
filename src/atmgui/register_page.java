@@ -321,8 +321,11 @@ public class register_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(() -> {
-			new register_page().setVisible(true);
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new register_page().setVisible(true);
+			}
 		});
 	}
 

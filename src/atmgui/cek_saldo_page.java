@@ -168,8 +168,11 @@ public class cek_saldo_page extends javax.swing.JFrame {
 		//</editor-fold>
 
 		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(() -> {
-			new cek_saldo_page().setVisible(true);
+		java.awt.EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new cek_saldo_page().setVisible(true);
+			}
 		});
 	}
 
