@@ -202,7 +202,7 @@ Massive appreciation to everyone investing time, ideas, and curiosity.
 
 <p align="center">
   <a href="https://github.com/daffarmd">
-    <img src="https://avatars.githubusercontent.com/u/134889168?v=4" width="110" style="border-radius:50%;" alt="daffarmd"/>
+    <img src="https://avatars.githubusercontent.com/u/88467999?v=4" width="110" style="border-radius:50%;" alt="daffarmd"/>
   </a>
 </p>
 
